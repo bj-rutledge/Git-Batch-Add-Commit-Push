@@ -164,4 +164,3 @@ function GetSize {
 
 }
 
-Push-Repo "D:\OneDrive\Documents\Unreal Projects\GitTest" "test push repo script";
