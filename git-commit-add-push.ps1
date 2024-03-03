@@ -1,9 +1,20 @@
 <#
    Created by BJ Rutledge 2024-02-28
    This tool is for whenever you have a shit ton of files that you need to push to github and you 
-   can't because the repo is to god-damn big... This will only work if the files are staged but not 
-   commited. 
+   can't because the repo is to god-damn big... This works by grabbing the output from git status. 
+   The script grabs the output of git status, then iterates through the files, creating batches of
+   less than 2GB, then adding, committing them, and pushing them. 
+   Each commit will get the same commit message followed by the batch number: 
 
+   git commit -m 'My commit message 01' 
+   git commit -m 'My commit message 02'
+   ...
+
+   On testing, I found that, if directories are added to a project 
+   with a lot of assets, the git status will only return the root 
+   directory. You will need to manually add the directory BEFORE 
+   running this script. The script will take it from there. Do not 
+   add individual files. 
 #>
 
 function Push-Repo {
